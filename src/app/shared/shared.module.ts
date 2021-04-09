@@ -1,16 +1,22 @@
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout/typings/module';
+import { FlexModule } from '@angular/flex-layout';
+
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 
 @NgModule({
   imports: [
-    FlexLayoutModule,
+    FlexModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule
   ],
   exports: [
-    FlexLayoutModule,
+    FlexModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule
-  ],
-  providers: []
+  ]
 })
 export class SharedModule { }

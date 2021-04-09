@@ -1,0 +1,42 @@
+<section class="users-container" fxLayout="column" fxFlex="60%" fxLayoutGap="30px">
+
+  <h4>Total Results: 260</h4>
+
+  <mat-card class="example-card">
+    <div fxLayout="row">
+      <section class="img" fxFlex="30%">
+        <div class="example-header-image">
+          <div></div>
+        </div>
+      </section>
+      <section class="content" fxFlex="70%">
+        <mat-card-title>Varun Nivas</mat-card-title>
+        <mat-card-subtitle>profile url</mat-card-subtitle>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <mat-card-content fxFlex="80">
+            <div>
+              <span>Data One</span>: <span>value one</span>
+            </div>
+            <div>
+              <span>Data two</span>: <span>value two</span>
+            </div>
+          </mat-card-content>
+          <mat-card-actions fxFlex="20" fxLayout="column" fxLayoutAlign="flex-end">
+            <button mat-flat-button>Details</button>
+          </mat-card-actions>
+        </div>
+      </section>
+    </div>
+    <div *ngIf="true" fxLayout="row" fxLayoutAlign="flex-end">
+      <div fxFlex="70%" fxLayout="row">
+        <div fxFlex="50%" fxLayoutAlign="center">1</div>
+        <div fxFlex="50%" fxLayoutAlign="center">2</div>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-paginator [length]="100"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</section>
