@@ -1,10 +1,22 @@
 <section class="main-container" fxLayout="column">
   <section class="search" fxFlex="100" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
-    <mat-select class="sort-drop-down" disableOptionCentering [(value)]="sortTypeSelected">
-      <mat-option [value]="'asc'" selected>Name (A - Z)</mat-option>
+    <mat-select placeholder="Select a Sort" class="sort-drop-down" disableOptionCentering [(value)]="sortTypeSelected">
+      <mat-select-trigger>
+        <span *ngIf="sortTypeSelected === 'asc'">Name(A - Z)</span>
+        <span *ngIf="sortTypeSelected === 'desc'">Name(Z - A)</span>
+        <span *ngIf="sortTypeSelected === 'rankUp'" fxLayout="row">
+          <div style="padding-top: 2px">Rank</div>
+          <mat-icon style="height: 20px;" class="rotate">arrow_downward</mat-icon>
+        </span>
+        <span *ngIf="sortTypeSelected === 'rankDown'" fxLayout="row">
+          <div style="padding-top: 2px;">Rank</div>
+          <mat-icon style="height: 20px;">arrow_downward</mat-icon>
+        </span>
+      </mat-select-trigger>
+      <mat-option [value]="'asc'">Name (A - Z)</mat-option>
       <mat-option [value]="'desc'">Name (Z - A)</mat-option>
-      <mat-option [value]="'rank'">Rank <mat-icon class="rotate">arrow_downward</mat-icon></mat-option>
-      <mat-option [value]="'rank'">Rank <mat-icon>arrow_downward</mat-icon></mat-option>
+      <mat-option [value]="'rankUp'">Rank <mat-icon class="rotate">arrow_downward</mat-icon></mat-option>
+      <mat-option [value]="'rankDown'">Rank <mat-icon>arrow_downward</mat-icon></mat-option>
     </mat-select>
 
     <div class="input-section" fxLayout="row">

@@ -32,9 +32,13 @@
 }
 
 .search-input {
-  padding-left: 5px;
+  padding-left: 15px;
 }
 
 .main-container {
   background-color: #F6F6F6;
+}
+
+.rotate {
+  transform: rotate(180deg);
 }

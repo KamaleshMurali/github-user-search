@@ -16,7 +16,7 @@ export interface Search {
 })
 export class SearchComponent implements OnInit {
 
-  sortTypeSelected: string = 'Name (A - Z)';
+  sortTypeSelected: string = 'asc';
   sortTypes = [];
   value: string;
   users: User[];
