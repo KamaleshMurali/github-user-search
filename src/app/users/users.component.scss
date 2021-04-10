@@ -1,3 +1,25 @@
 .users-container {
   margin: auto;
 }
+
+.image {
+  text-align: center;
+}
+
+.avatar-img {
+  border-radius: 50%;
+}
+
+::ng-deep .mat-card {
+  padding: 0px !important;
+}
+
+.user-section {
+  padding: 16px 16px 0px 0px;
+  border-bottom: 1px solid #efefef;
+}
+
+.actions {
+  border: 1px solid #B3C6D3;
+  color: #B3C6D3;
+}

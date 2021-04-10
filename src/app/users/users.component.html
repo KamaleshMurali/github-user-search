@@ -1,42 +1,46 @@
 <section class="users-container" fxLayout="column" fxFlex="60%" fxLayoutGap="30px">
 
-  <h4>Total Results: 260</h4>
+  <h4>Total Results: {{totalCount}}</h4>
 
-  <mat-card class="example-card">
-    <div fxLayout="row">
-      <section class="img" fxFlex="30%">
-        <div class="example-header-image">
-          <div></div>
-        </div>
-      </section>
-      <section class="content" fxFlex="70%">
-        <mat-card-title>Varun Nivas</mat-card-title>
-        <mat-card-subtitle>profile url</mat-card-subtitle>
-        <div fxLayout="row" fxLayoutAlign="space-between">
-          <mat-card-content fxFlex="80">
-            <div>
-              <span>Data One</span>: <span>value one</span>
-            </div>
-            <div>
-              <span>Data two</span>: <span>value two</span>
-            </div>
-          </mat-card-content>
-          <mat-card-actions fxFlex="20" fxLayout="column" fxLayoutAlign="flex-end">
-            <button mat-flat-button>Details</button>
-          </mat-card-actions>
-        </div>
-      </section>
-    </div>
-    <div *ngIf="true" fxLayout="row" fxLayoutAlign="flex-end">
-      <div fxFlex="70%" fxLayout="row">
-        <div fxFlex="50%" fxLayoutAlign="center">1</div>
-        <div fxFlex="50%" fxLayoutAlign="center">2</div>
+  <ng-container *ngFor="let user of users">
+    <mat-card class="user-card">
+      <div class="user-section" fxLayout="row">
+        <section class="img" fxFlex="30%">
+          <div class="image">
+            <img class="avatar-img" src={{user?.avatar_url}} width="90px" height="90px" alt="avatar" />
+          </div>
+        </section>
+        <section class="content" fxFlex="70%">
+          <mat-card-title>{{user?.login}}</mat-card-title>
+          <mat-card-subtitle><span>Profile URL:</span>{{user?.html_url}}</mat-card-subtitle>
+          <div fxLayout="row" fxLayoutAlign="space-between">
+            <mat-card-content fxFlex="80">
+              <div>
+                <span>Data One</span>: <span>value one</span>
+              </div>
+              <div>
+                <span>Data two</span>: <span>value two</span>
+              </div>
+            </mat-card-content>
+            <mat-card-actions fxFlex="20" fxLayout="column" fxLayoutAlign="flex-end">
+              <button class="actions" mat-flat-button (click)="fetchRepos(user)">{{user.isExpand ? 'Collapse' : 'Details'}}</button>
+            </mat-card-actions>
+          </div>
+        </section>
       </div>
-    </div>
-  </mat-card>
+      <div fxLayout="column" *ngIf="user.isExpand">
+        <ng-container *ngFor="let repoDetail of repoDetails; let index = index">
+          <div fxLayout="row" fxFlex="50px" fxLayoutAlign="flex-end center" [ngStyle]="{'background-color':(index % 2 )=== 0 ? '#FFFFFF' : '#F9F9F9' }">
+            <div fxFlex="35" fxLayoutAlign="center">{{repoDetail?.name}}</div>
+            <div fxFlex="35" fxLayoutAlign="center">{{repoDetail?.language}}</div>
+          </div>
+        </ng-container>
+      </div>
+    </mat-card>
+  </ng-container>
 
-  <mat-paginator [length]="100"
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 25, 100]">
+  <mat-paginator [length]="length"
+                 [pageSizeOptions]="pageSizeOptions"
+                 >
   </mat-paginator>
 </section>
