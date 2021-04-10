@@ -1,7 +1,7 @@
 <section class="main-container" fxLayout="column">
   <section class="search" fxFlex="100" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
     <mat-select class="sort-drop-down" disableOptionCentering [(value)]="sortTypeSelected">
-      <mat-option [value]="'asc'">Name (A - Z)</mat-option>
+      <mat-option [value]="'asc'" selected>Name (A - Z)</mat-option>
       <mat-option [value]="'desc'">Name (Z - A)</mat-option>
       <mat-option [value]="'rank'">Rank <mat-icon class="rotate">arrow_downward</mat-icon></mat-option>
       <mat-option [value]="'rank'">Rank <mat-icon>arrow_downward</mat-icon></mat-option>

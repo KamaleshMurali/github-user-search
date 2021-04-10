@@ -13,14 +13,17 @@ import { User } from '../shared/model/user.model';
 export class UsersComponent implements OnInit {
 
   @Input('totalCount') totalCount: number;
+
   private _users: User[];
   @Input('users')
   set users(users: User[]) {
     this._users = users;
-    // this.pagedUsers = users;
+    this.dataSource.data = users;
+    this.dataSource.paginator = this.paginator;
+    this.$userObservable = this.dataSource.connect();
   }
   get users() {
-    return this._users
+    return this._users;
   }
 
   length: number = 0;
@@ -29,11 +32,13 @@ export class UsersComponent implements OnInit {
   pagedUsers: User[];
   repoDetails: any[];
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  $userObservable: Observable<any>;
+  dataSource: MatTableDataSource<User> = new MatTableDataSource<User>([]);
+
   constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   onPage(event: PageEvent) {
     let startIndex = event.pageIndex * event.pageSize;
