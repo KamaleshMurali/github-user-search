@@ -1,6 +1,12 @@
 <section class="main-container" fxLayout="column">
   <section class="search" fxFlex="100" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
-    <mat-select placeholder="Select a Sort" class="sort-drop-down" disableOptionCentering [(value)]="sortTypeSelected">
+    <mat-select
+      placeholder="Select a Sort"
+      class="sort-drop-down"
+      disableOptionCentering
+      [(value)]="sortTypeSelected"
+      (selectionChange)="sort($event.value)"
+      [disabled]="value.length <= 0">
       <mat-select-trigger>
         <span *ngIf="sortTypeSelected === 'asc'">Name(A - Z)</span>
         <span *ngIf="sortTypeSelected === 'desc'">Name(Z - A)</span>

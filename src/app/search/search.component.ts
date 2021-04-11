@@ -16,9 +16,9 @@ export interface Search {
 })
 export class SearchComponent implements OnInit {
 
-  sortTypeSelected: string = 'asc';
+  sortTypeSelected: string;
   sortTypes = [];
-  value: string;
+  value: string = '';
   users: User[];
   totalCount: number = 0;
 
@@ -34,15 +34,29 @@ export class SearchComponent implements OnInit {
         });
   }
 
-  search() {
+  search(sortType?: string) {
+    let sortBy: string;
+    let sortOrder: string;
+    if (sortType === 'asc' || sortType === 'desc') {
+      sortOrder = sortType;
+      sortBy = 'users'
+    }
+    if (sortType === 'rankUp' || sortType === 'rankDown') {
+      sortOrder = sortType === 'rankUp' ? 'desc' : 'asc';
+      sortBy = 'stars'
+    }
     this.userService
-        .searchUsers(this.value)
+        .searchUsers(this.value, sortBy, sortOrder)
         .subscribe((data: Search) =>
     {
       this.totalCount = data.total_count;
       data.items.forEach(user => user['isExpand'] = false);
       this.users = data.items
     });
+  }
+
+  sort(sortType: string) {
+    this.search(sortType);
   }
 
 }

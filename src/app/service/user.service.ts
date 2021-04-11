@@ -13,8 +13,10 @@ export class UserService {
     return this.http.get<User[]>(url);
   }
 
-  searchUsers(searchString: string): Observable<any> {
-    let url = `https://api.github.com/search/users?q=${searchString}`;
+  searchUsers(searchString: string, sortBy?: string, sortOrder?: string): Observable<any> {
+    let url: string = `https://api.github.com/search/users?q=${searchString}`;
+    if (sortBy) url = url.concat(`&s=${sortBy}`);
+    if (sortOrder) url = url.concat(`&o=${sortOrder}`);
     return this.http.get<any>(url);
   }
 
@@ -22,4 +24,5 @@ export class UserService {
     let url = `https://api.github.com/users/${username}/repos`;
     return this.http.get(url);
   }
+
 }
