@@ -40,15 +40,6 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onPage(event: PageEvent) {
-    let startIndex = event.pageIndex * event.pageSize;
-    let endIndex = startIndex + event.pageSize;
-    if (endIndex > this.length) {
-      endIndex = this.length;
-    }
-    this.pagedUsers = this.users.slice(startIndex, endIndex);
-  }
-
   fetchRepos(user: User) {
     this.repoDetails = [];
     user.isExpand = !user.isExpand;
@@ -58,5 +49,6 @@ export class UsersComponent implements OnInit {
           this.repoDetails = data;
         });
   }
+
 
 }

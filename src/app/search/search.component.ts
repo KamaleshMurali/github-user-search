@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit {
         .getUsers()
         .subscribe((users: User[]) => {
           this.totalCount = users.length;
-          users.forEach(user => user['isExpand'] = false);
+          users.forEach(user => {user['isExpand'] = false});
           this.users = users;
         });
   }

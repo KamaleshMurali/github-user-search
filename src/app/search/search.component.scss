@@ -1,6 +1,9 @@
 .search {
   background-color: #147ABC;
   font-size: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
   ::ng-deep .mat-form-field {
     width: 250px;
@@ -42,3 +45,5 @@
 .rotate {
   transform: rotate(180deg);
 }
+
+
